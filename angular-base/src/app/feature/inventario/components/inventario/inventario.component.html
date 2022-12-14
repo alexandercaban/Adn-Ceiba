@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="col-sm-6 offset-3">
+        <br>
+        <h3 class="title" style="color:#106cc8">Registrar Inventario</h3>
+        <form class = "form" [formGroup]="inventarioForm" (ngSubmit)="crear()">
+
+            <div class="row">
+                <label for="idArticulo" style="color:#106cc8">Artículo</label>
+                <select validar  class="form-select" id="idArticulo" name="idArticulo" formControlName="idArticulo">
+                    <option *ngFor="let item of listarArticulos | async" value = {{item.id}}>{{item.descripcion}}, Precio:{{item.precio}}</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="cantidadIngreso" style="color:#106cc8">Cantidad Disponible</label>
+                    <input validar type="number" class="form-control" id="cantidadIngreso" name="cantidadIngreso" formControlName="cantidadIngreso" >
+                </div>
+                <div class="col-sm-6">
+                    <label for="fechaIngreso" style="color:#106cc8">Fecha Ingreso</label>
+                    <input validar type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" formControlName="fechaIngreso" >
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button class="btn btn-primary" id="botonGuardar" [disabled]="!inventarioForm.valid">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>
